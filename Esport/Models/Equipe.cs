@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 
 namespace Esport.Models
 {
-    public class Personnel
+    public class Equipe
     {
         public int ID { get; set; }
         public string Nom { get; set; }
-        public string Prenom { get; set; }
-        [Display(Name = "Nom du licencié")]
-        public string NomComplet
-        {
-            get
-            {
-                return Nom + " " + Prenom;
-            }
-        }
+
+        //Lien ManyToMany
+        [Display(Name = "Licenciés dans cette équipe :")]
+        public ICollection<CompoEquipe> CompoEquipe { get; set; }
     }
 }
