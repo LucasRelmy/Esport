@@ -11,6 +11,8 @@ namespace Esport.Models
         public int ID { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
+        public bool Validate { get; set; }
+
         [Display(Name = "Nom du licencié")]
         public string NomComplet
         {

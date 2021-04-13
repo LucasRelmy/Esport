@@ -25,6 +25,11 @@
                 <span asp-validation-for="Licencie.Prenom" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Licencie.Validate" class="control-label"></label>
+                <input asp-for="Licencie.Validate" class="form-control" />
+                <span asp-validation-for="Licencie.Validate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
