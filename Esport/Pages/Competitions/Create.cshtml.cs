@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Esport.Data;
 using Esport.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Esport.Pages.Competitions
 {
@@ -20,10 +21,16 @@ namespace Esport.Pages.Competitions
         }
         [BindProperty]
         public int competitionBuilderNum { get; set; }
+        public CompetitionBuilder competitionbuilder { get; set; }
 
-        [BindProperty]
         public Competition Competition { get; set; }
+        [BindProperty]
+        public int nbEquipe { get; set; }
         public List<SelectListItem> SelectTypeCompetition { get; private set; }
+        public List<Equipe> Equipes { get; private set; }
+        public List<SelectListItem> ListeEquipe { get; private set; }
+
+
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -73,14 +80,13 @@ namespace Esport.Pages.Competitions
 
                 if(competitionBuilderNum == 1)
                 {
-
+                    competitionbuilder = new CompetitionClassiqueBuilder();
                 }
                 else
                 {
+                    competitionbuilder = new CompetitionRoundRobinBuilder();
 
                 }
-               
-
 
             }
             else
@@ -106,11 +112,28 @@ namespace Esport.Pages.Competitions
                 return;
             }
 
+            if (nbEquipe != 0)
+            {
+                Equipes = await _context.Equipe.Include(e => e.Nom).Include(e => e.ID).ToListAsync();
 
-            return;
-
+                ListeEquipe = new List<SelectListItem>();
+                ListeEquipe.Add(new SelectListItem
+                {
+                    Text = "Choisir une Equipe",
+                    Value = "0"
+                });
+                foreach (Equipe e in Equipes)
+                {
+                    ListeEquipe.Add(new SelectListItem
+                    {
+                        Text = e.Nom,
+                        Value = e.ID.ToString()
+                    });
+                }
+            }
 
 
         }
+        
     }
 }
