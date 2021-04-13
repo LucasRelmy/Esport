@@ -5,21 +5,49 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
 <h4>Competition</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
+<div class="form-group">
+
+    @if (Model.competitionBuilderNum != 0)
+    {
+        if (Model.competitionBuilderNum == 1)
+        {
+            <p>1</p>
+            <a asp-page="./Index">Retour</a>
+
+        }
+        else
+        {
+            <p>2</p>
+            <a asp-page="./Index">Retour</a>
+        }
+
+
+    }
+    else
+    {
+        <h4>
+            Veuillez choisir le type de compétition.<br />
+        </h4>
+
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <select asp-for="competitionBuilderNum" class="form-control" asp-items="ViewBag.SelectTypeCompetition"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+
+</div>
 <div>
     <a asp-page="Index">Back to List</a>
 </div>

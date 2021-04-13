@@ -18,18 +18,40 @@ namespace Esport.Pages.Competitions
         {
             _context = context;
         }
-
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
+        [BindProperty]
+        public int competitionBuilderNum { get; set; }
 
         [BindProperty]
         public Competition Competition { get; set; }
+        public List<SelectListItem> SelectTypeCompetition { get; private set; }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            SelectTypeCompetition = new List<SelectListItem>();
+            SelectTypeCompetition.Add(new SelectListItem
+            {
+                Text = "Choisir un type de compétition",
+                Value = "0"
+            });
+            SelectTypeCompetition.Add(new SelectListItem
+            {
+                Text = "Classique",
+                Value = "1"
+            });
+            SelectTypeCompetition.Add(new SelectListItem
+            {
+                Text = "Round Robin",
+                Value = "2"
+            });
+            ViewData["SelectTypeCompetition"] = new SelectList(SelectTypeCompetition, "Value", "Text");
+
+            return Page();
+        }
+
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        /*public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
@@ -40,6 +62,55 @@ namespace Esport.Pages.Competitions
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+        }*/
+
+        public async Task OnPostAsync()
+        {
+            await OnGetAsync();
+
+            if (competitionBuilderNum != 0)
+            {
+
+                if(competitionBuilderNum == 1)
+                {
+
+                }
+                else
+                {
+
+                }
+               
+
+
+            }
+            else
+            {
+                SelectTypeCompetition = new List<SelectListItem>();
+                SelectTypeCompetition.Add(new SelectListItem
+                {
+                    Text = "Choisir un type de compétition",
+                    Value = "0"
+                });
+                SelectTypeCompetition.Add(new SelectListItem
+                {
+                    Text = "Classique",
+                    Value = "1"
+                });
+                SelectTypeCompetition.Add(new SelectListItem
+                {
+                    Text = "Round Robin",
+                    Value = "2"
+                });
+                ViewData["SelectTypeCompetition"] = new SelectList(SelectTypeCompetition, "Value", "Text");
+
+                return;
+            }
+
+
+            return;
+
+
+
         }
     }
 }
