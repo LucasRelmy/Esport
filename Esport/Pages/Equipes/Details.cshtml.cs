@@ -20,8 +20,6 @@ namespace Esport.Pages.Shared.Equipes
             _context = context;
         }
         public IList<Licencie> LesLicencies { get; set; }
-        //public List<SelectListItem> SelectLesLicenciesData { get; private set; }
-
 
         public Equipe Equipe { get; set; }
 

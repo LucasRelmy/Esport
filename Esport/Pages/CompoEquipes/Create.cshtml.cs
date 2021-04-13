@@ -27,14 +27,6 @@ namespace Esport.Pages.Shared.CompoEquipes
         public IList<Equipe> LesEquipes { get; set; }
         public List<SelectListItem> SelectLesEquipesData { get; private set; }
 
-
-        /*public IActionResult OnGet()
-        {
-        //ViewData["EquipeID"] = new SelectList(_context.Equipe, "ID", "ID");
-        // ViewData["LicencieID"] = new SelectList(_context.Licencie, "ID", "ID");
-            return Page();
-        }*/
-
         public async Task<IActionResult> OnGetAsync()
         {
             //combobox Licencié

@@ -57,22 +57,6 @@ namespace Esport.Pages.Competitions
             return Page();
         }
 
-
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
-        /*public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Competition.Add(Competition);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
-        }*/
-
         public async Task OnPostAsync()
         {
             await OnGetAsync();
