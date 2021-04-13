@@ -16,7 +16,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Equipe[0].Nom)
             </th>
-            <th></th>
+            <th>Yo</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +24,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Validate)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

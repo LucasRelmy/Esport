@@ -19,7 +19,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Licencie[0].Prenom)
             </th>
-            <th></th>
+            <th>Validate</th>
         </tr>
     </thead>
     <tbody>
@@ -30,6 +30,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Prenom)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.Validate) 
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
