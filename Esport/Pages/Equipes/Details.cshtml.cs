@@ -32,11 +32,7 @@ namespace Esport.Pages.Shared.Equipes
                 return NotFound();
             }
 
-            Equipe = await _context.Equipe
-                .Include(e => e.CompoEquipe)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.ID == id);
-            LesLicencies = await _context.Licencie.ToListAsync();
+            Equipe = await _context.Equipe.Include(i => i.CompoEquipe).ThenInclude(i => i.licencie).FirstOrDefaultAsync(m => m.ID == id);
 
             if (Equipe == null)
             {

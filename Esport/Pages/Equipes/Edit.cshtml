@@ -20,6 +20,11 @@
                 <span asp-validation-for="Equipe.Nom" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Equipe.Validate" class="control-label"></label>
+                <input asp-for="Equipe.Validate" class="form-control" />
+                <span asp-validation-for="Equipe.Validate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

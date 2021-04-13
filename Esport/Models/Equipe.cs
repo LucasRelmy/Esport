@@ -17,6 +17,7 @@ namespace Esport.Models
         public int CompetitionG { get; set; }
         public int CompetitionP { get; set; }
 
+        public bool Validate { get; set; }
 
         //Lien ManyToMany
         [Display(Name = "Licenciés dans cette équipe :")]
