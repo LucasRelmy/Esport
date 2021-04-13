@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Esport.Data;
 using Esport.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Esport.Pages.Competitions
 {
+    [Authorize(Roles = "personnel,organisateur")]
     public class CreateModel : PageModel
     {
         private readonly Esport.Data.ApplicationDbContext _context;

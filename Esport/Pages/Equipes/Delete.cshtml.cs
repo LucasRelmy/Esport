@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Esport.Data;
 using Esport.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Esport.Pages.Shared.Equipes
 {
+    [Authorize(Roles = "personnel")]
     public class DeleteModel : PageModel
     {
         private readonly Esport.Data.ApplicationDbContext _context;

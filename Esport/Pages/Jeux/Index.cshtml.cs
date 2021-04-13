@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Esport.Data;
 using Esport.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Esport.Pages.Jeux
 {

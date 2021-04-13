@@ -8,9 +8,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Esport.Data;
 using Esport.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Esport.Pages.Shared.Personnels
 {
+    [Authorize(Roles = "personnel")]
+
     public class EditModel : PageModel
     {
         private readonly Esport.Data.ApplicationDbContext _context;
