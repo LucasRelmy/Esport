@@ -23,5 +23,9 @@ namespace Esport.Data
 
         public DbSet<Personnel> Personnel { get; set; }
 
+        public DbSet<Esport.Models.Jeu> Jeu { get; set; }
+
+        public DbSet<Esport.Models.Competition> Competition { get; set; }
+
     }
 }

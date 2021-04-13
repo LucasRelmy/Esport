@@ -18,6 +18,32 @@
             @Html.DisplayFor(model => model.Equipe.Nom)
         </dd>
     </dl>
+    <h3>Les membres de l'équipes</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    Prénom
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Equipe.CompoEquipe)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.licencie.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.licencie.Prenom)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Equipe.ID">Edit</a> |

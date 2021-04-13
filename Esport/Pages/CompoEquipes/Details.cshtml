@@ -15,15 +15,17 @@
             @Html.DisplayNameFor(model => model.CompoEquipe.licencie)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompoEquipe.licencie.ID)
+            @Html.DisplayFor(model => model.CompoEquipe.licencie.NomComplet)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CompoEquipe.equipe)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompoEquipe.equipe.ID)
+            @Html.DisplayFor(model => model.CompoEquipe.equipe.Nom)
         </dd>
     </dl>
+    
+    
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.CompoEquipe.ID">Edit</a> |

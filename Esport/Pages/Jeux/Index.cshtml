@@ -1,5 +1,5 @@
 ﻿@page
-@model Esport.Pages.Shared.CompoEquipes.IndexModel
+@model Esport.Pages.Jeux.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,22 +14,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CompoEquipe[0].licencie)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CompoEquipe[0].equipe)
+                @Html.DisplayNameFor(model => model.Jeu[0].Nom)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.CompoEquipe) {
+@foreach (var item in Model.Jeu) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.licencie.NomComplet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.equipe.Nom)
+                @Html.DisplayFor(modelItem => item.Nom)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Esport.Data;
 using Esport.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Esport.Pages.Shared.CompoEquipes
 {
@@ -19,10 +20,63 @@ namespace Esport.Pages.Shared.CompoEquipes
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IList<Licencie> LesLicencies { get; set; }
+        public List<SelectListItem> SelectLesLicenciesData { get; private set; }
+        public IList<Equipe> LesEquipes { get; set; }
+        public List<SelectListItem> SelectLesEquipesData { get; private set; }
+
+
+        /*public IActionResult OnGet()
         {
-        ViewData["EquipeID"] = new SelectList(_context.Equipe, "ID", "ID");
-        ViewData["LicencieID"] = new SelectList(_context.Licencie, "ID", "ID");
+        //ViewData["EquipeID"] = new SelectList(_context.Equipe, "ID", "ID");
+        // ViewData["LicencieID"] = new SelectList(_context.Licencie, "ID", "ID");
+            return Page();
+        }*/
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            //combobox Licencié
+            LesLicencies = await _context.Licencie.ToListAsync();
+
+            SelectLesLicenciesData = new List<SelectListItem>();
+            SelectLesLicenciesData.Add(new SelectListItem
+            {
+                Text = "Choisir un licencié",
+                Value = "0"
+            });
+            foreach (Licencie e in LesLicencies)
+            {
+                SelectLesLicenciesData.Add(new SelectListItem
+                {
+                    Text = e.NomComplet,
+                    Value = e.ID.ToString()
+                });
+            }
+
+            // Remplissage de la vue
+            ViewData["SelectLesLicenciesData"] = new SelectList(SelectLesLicenciesData, "Value", "Text");
+
+            //combobox Licencié
+
+            LesEquipes = await _context.Equipe.ToListAsync();
+
+            SelectLesEquipesData = new List<SelectListItem>();
+            SelectLesEquipesData.Add(new SelectListItem
+            {
+                Text = "Choisir une Equipe",
+                Value = "0"
+            });
+            foreach (Equipe e in LesEquipes)
+            {
+                SelectLesEquipesData.Add(new SelectListItem
+                {
+                    Text = e.Nom,
+                    Value = e.ID.ToString()
+                });
+            }
+
+            // Remplissage de la vue
+            ViewData["SelectLesEquipesData"] = new SelectList(SelectLesEquipesData, "Value", "Text");
             return Page();
         }
 

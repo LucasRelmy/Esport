@@ -11,6 +11,13 @@ namespace Esport.Models
         public int ID { get; set; }
         public string Nom { get; set; }
 
+        public int MancheG { get; set; }
+        public int MancheP { get; set; }
+
+        public int CompetitionG { get; set; }
+        public int CompetitionP { get; set; }
+
+
         //Lien ManyToMany
         [Display(Name = "Licenciés dans cette équipe :")]
         public ICollection<CompoEquipe> CompoEquipe { get; set; }

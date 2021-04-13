@@ -7,9 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Esport.Data;
 using Esport.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Esport.Pages.Shared.Equipes
+namespace Esport.Pages.Jeux
 {
     public class DetailsModel : PageModel
     {
@@ -19,11 +18,8 @@ namespace Esport.Pages.Shared.Equipes
         {
             _context = context;
         }
-        public IList<Licencie> LesLicencies { get; set; }
-        //public List<SelectListItem> SelectLesLicenciesData { get; private set; }
 
-
-        public Equipe Equipe { get; set; }
+        public Jeu Jeu { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -32,18 +28,13 @@ namespace Esport.Pages.Shared.Equipes
                 return NotFound();
             }
 
-            Equipe = await _context.Equipe
-                .Include(e => e.CompoEquipe)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.ID == id);
-            LesLicencies = await _context.Licencie.ToListAsync();
+            Jeu = await _context.Jeu.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Equipe == null)
+            if (Jeu == null)
             {
                 return NotFound();
             }
             return Page();
-
         }
     }
 }

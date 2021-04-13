@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Esport.Data;
 using Esport.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Esport.Pages.Shared.Licencies
 {
@@ -20,6 +21,9 @@ namespace Esport.Pages.Shared.Licencies
         }
 
         public Licencie Licencie { get; set; }
+        public List<CompoEquipe> CompoEquipe { get; private set; }
+        public IList<Equipe> LesEquipes { get; set; }
+        public Equipe Equipe { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,6 +31,10 @@ namespace Esport.Pages.Shared.Licencies
             {
                 return NotFound();
             }
+            CompoEquipe = await _context.CompoEquipe.Where(m => m.LicencieID == id).ToListAsync();
+            LesEquipes = await _context.Equipe.Where(m => m.CompoEquipe == this.CompoEquipe).ToListAsync();
+
+            //Equipe = (await _context.Equipe.FindAsync(LesEquipes.First().Nom));
 
             Licencie = await _context.Licencie.FirstOrDefaultAsync(m => m.ID == id);
 
