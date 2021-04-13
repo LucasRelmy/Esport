@@ -29,14 +29,19 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CompoEquipe)
         </dd>
-        @foreach (var item in Model.CompoEquipe)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EquipeID)
-                </td>
-            </tr>
-        }
+        <dt class="col-sm-2">
+            Nom Equipe
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model.Licencie.CompoEquipe)
+            {
+
+                @Html.DisplayFor(modelItem => item.equipe.Nom)
+
+
+            }
+        </dd>         
+
     </dl>
 </div>
 <div>
