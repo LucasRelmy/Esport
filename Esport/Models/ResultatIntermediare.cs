@@ -19,6 +19,7 @@ namespace Esport.Models
         {
             resultatCompets.Remove(r);
             return true;
-            
+
+        }
     }
 }

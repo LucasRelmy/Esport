@@ -19,5 +19,5 @@ namespace Esport.Models
             return false;
         }
     }
-    }
+    
 }
