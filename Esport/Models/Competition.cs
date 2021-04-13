@@ -12,7 +12,7 @@ namespace Esport.Models
         private List<Equipe> EquipesEnLice { get; set; }
         private Jeu Jeu { get; set; }
         public Phase Phase { get; set; }
-
+        Competition() { }
         public Competition(List<Equipe> pEquipesParticipantes, Jeu pJeu)
         {
             EquipesParticipantes = pEquipesParticipantes;
@@ -24,7 +24,7 @@ namespace Esport.Models
         }
         public void SetJeu(Jeu pJeu)
         {
-             Jeu = pJeu;
+            Jeu = pJeu;
         }
     }
 }

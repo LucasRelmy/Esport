@@ -27,5 +27,13 @@ namespace Esport.Data
 
         public DbSet<Esport.Models.Competition> Competition { get; set; }
 
+        public DbSet<Esport.Models.Phase> Phase { get; set; }
+
+        public DbSet<Esport.Models.ResultatFinal> ResultatFinal { get; set; }
+        public DbSet<Esport.Models.ResultatIntermediare> ResultatCompet { get; set; }
+
+
+
+
     }
 }

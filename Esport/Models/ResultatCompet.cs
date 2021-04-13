@@ -23,6 +23,8 @@ namespace Esport.Models
             Equipe2 = pEquipe2;
         }
 
+        
+
         public abstract bool Add(ResultatCompet r);
         public abstract bool Remove(ResultatCompet r);
 

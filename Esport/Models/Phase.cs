@@ -7,5 +7,6 @@ namespace Esport.Models
 {
     public abstract class Phase
     {
+        public int ID { get; set; }
     }
 }
