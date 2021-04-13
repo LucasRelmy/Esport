@@ -35,6 +35,7 @@ namespace Esport.Pages.Shared.Licencies
             LesEquipes = await _context.Equipe.Where(m => m.CompoEquipe == this.CompoEquipe).ToListAsync();
 
             //Equipe = (await _context.Equipe.FindAsync(LesEquipes.First().Nom));
+            Licencie = await _context.Licencie.Include(i => i.CompoEquipe).ThenInclude(i => i.equipe).FirstOrDefaultAsync(m => m.ID == id);
 
             Licencie = await _context.Licencie.FirstOrDefaultAsync(m => m.ID == id);
 
